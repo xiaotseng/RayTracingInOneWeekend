@@ -11,10 +11,10 @@ vec3 color(const Ray &r)
 }
 int main()
 {
-	int nx = 1024;
-	int ny = 512;
+	int nx = 1024; //图片宽度
+	int ny = 512;  //图片高度
 	std::ofstream file("exsample.ppm");
-	file << "P3\n"
+	file << "P3\n"//一定要大写的P
 		 << nx << " " << ny << "\n255\n";
 
 	for (int i = ny - 1; i >= 0; i--)
@@ -24,12 +24,15 @@ int main()
 		{
 			float u = float(j) / float(nx - 1);
 			float v = float(i) / float(ny - 1);
+			//NDC空间坐标
 			u = u * 2 - 1;
 			v = v * 2 - 1;
 
 			Ray r(vec3(), NDC2ViewDir(160, 1.2, u, v));
+			//浮点颜色
 			vec3 col = color(r);
 
+			//整型颜色
 			int ir = int(255.f * col[0]);
 			int ig = int(255.f * col[1]);
 			int ib = int(255.f * col[2]);
