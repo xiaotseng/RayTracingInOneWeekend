@@ -3,7 +3,7 @@
 #define PI 3.14159265
 #define TO_Radian(X) (PI/180.0f) * X
 
-inline vec3 NDC2WorldDir(float FOV,float rate,float u,float v) 
+inline vec3 NDC2ViewDir(float FOV,float rate,float u,float v) 
 {
 	return vec3(rate*u, v, 1 / tanf(TO_Radian(FOV) / 2)).make_unit_vector();
 }
