@@ -8,7 +8,7 @@ vec3 color(const Ray &r)
 { //用方向混合颜色朝上:t=1，朝下:t=0
 	float t = 0.5 * (r.direction()[1] + 1.0);
 	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
-}
+} 
 int main()
 {
 	int nx = 1024; //图片宽度
