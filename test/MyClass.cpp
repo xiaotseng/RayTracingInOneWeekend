@@ -1,7 +1,5 @@
 #include "MyClass.h"
-MyClass::MyClass(){}
-void MyClass::clsFun(){}
-
-namespace kele {
-int i=100;
-};
+ZengLingJun::MyClass::MyClass() {}
+void ZengLingJun::MyClass::clsFun() {}
+int ZengLingJun::name=100;
+int ZengLingJun::i=200;

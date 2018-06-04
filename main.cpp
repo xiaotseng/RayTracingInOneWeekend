@@ -3,7 +3,7 @@
 #include "vec3.h"
 #include "Ray.h"
 #include "geometry.h"
-#include "add.h"
+#include "Lib/add.h"
 using namespace std;
 float hit_sphere(const vec3 &center, float radius, const Ray &r)
 { //假设射线上有一个点P(t),满足(P(t)-center)和模平方为radius的平方。求射线方向上是否有解
@@ -77,12 +77,8 @@ int main()
 			}
 		}
 	}
-<<<<<<< HEAD
 	Ray *feef = new Ray(vec3(), vec3(0, 1, 0));
-=======
->>>>>>> 4a8d3121bff8b829b7a496b72c9076ceddf0d58d
 	file.close();
-	cout<<add(2,12)<<endl;
 	system("pause");
 	return 0;
 }
