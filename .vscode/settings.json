@@ -1,8 +1,12 @@
 {
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "files.associations": {
+        "*.json": "java",
+        "*.js": "javascript",
         "*.java": "java",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp"
     }
 }
