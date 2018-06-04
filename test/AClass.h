@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _ACLASS_H_
 #define _ACLASS_H_
 #include "MyClass.h"

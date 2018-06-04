@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _MYCLASS_H_
 #define _MYCLASS_H_
 namespace ZengLingJun

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _HITABLE_H_
 #define _HITABLE_H_
 #include "Ray.h"
