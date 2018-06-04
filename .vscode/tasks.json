@@ -22,8 +22,21 @@
                 "-static",
                 "-g",
                 "main.cpp",
+                "libmyAPI.a"
                 "-o",
                 "${workspaceFolder}/bin/main_debug.exe"
+            ]
+        },
+        {
+            "label": "静态库编译",
+            "type": "shell",
+            "command": "g++",
+            "args":[
+                "-c"
+                "Lib/add.cpp",
+                "Lib/sub.cpp",
+                
+                
             ]
         }
     ]

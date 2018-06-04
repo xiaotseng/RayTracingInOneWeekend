@@ -3,6 +3,7 @@
 #include "vec3.h"
 #include "Ray.h"
 #include "geometry.h"
+#include "add.h"
 using namespace std;
 vec3 color(const Ray &r)
 { //用方向混合颜色朝上:t=1，朝下:t=0
@@ -22,6 +23,7 @@ int main()
 
 		for (int j = 0; j < nx; j++)
 		{
+			//uv坐标
 			float u = float(j) / float(nx - 1);
 			float v = float(i) / float(ny - 1);
 			//NDC空间坐标
@@ -49,8 +51,8 @@ int main()
 		}
 	}
 	Ray *feef = new Ray(vec3(), vec3(0, 1, 0));
-	vec3::forward();
-	cout << feef->point_at_parameter(10);
 	file.close();
+	cout<<add(2,12)<<endl;
+	system("pause");
 	return 0;
 }
