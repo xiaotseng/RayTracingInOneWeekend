@@ -5,6 +5,7 @@
 AClass cls;
 void myfun()
 {
+    ZengLingJun::print();
     cls.clsFun();
     ZengLingJun::MyClass *myCls = new ZengLingJun::MyClass();
     myCls->clsFun();

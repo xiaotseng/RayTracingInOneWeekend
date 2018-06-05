@@ -4,13 +4,14 @@ namespace ZengLingJun
 {
 extern int i; //声明全局变量
 extern int name;
+void print();
 class MyClass
 {
-  public:
-    int i;
-    int b;
-    MyClass();
-    void clsFun();
+public:
+  int i;
+  int b;
+  MyClass();
+  void clsFun();
 };
 } // namespace ZengLingJun
 

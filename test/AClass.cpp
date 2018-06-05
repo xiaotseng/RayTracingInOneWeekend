@@ -1,3 +1,3 @@
 #include "AClass.h"
-AClass::AClass(){}
+AClass::AClass() {}
 void AClass::clsFun(){};
