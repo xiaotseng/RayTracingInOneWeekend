@@ -7,7 +7,7 @@
             "label": "Release",
             "type": "shell",
             "command": "g++",
-            "args":[
+            "args": [
                 "-static",
                 "main.cpp",
                 "-o",
@@ -18,25 +18,28 @@
             "label": "Debug",
             "type": "shell",
             "command": "g++",
-            "args":[
+            "args": [
                 "-static",
                 "-g",
                 "main.cpp",
-                "libmyAPI.a"
+                "-Wall",
+                "-std=c++11",
+                //"libmyAPI.a",
                 "-o",
                 "${workspaceFolder}/bin/main_debug.exe"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         },
         {
             "label": "静态库编译",
             "type": "shell",
             "command": "g++",
-            "args":[
-                "-c"
+            "args": [
+                "-c",
                 "Lib/add.cpp",
-                "Lib/sub.cpp",
-                
-                
+                "Lib/sub.cpp"
             ]
         }
     ]
