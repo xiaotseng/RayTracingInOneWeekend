@@ -6,20 +6,20 @@
 class Camera
 {
   public:
-    float FOV;
-    float rate;
+    float FOV;  //视角
+    float rate; //高宽比
     Camera(float inFOV, float inrate)
     {
         FOV = inFOV;
         rate = inrate;
     }
     void updateRay(float u, float v, Ray &r)
-    {
+    { //通过uv计算射线
         u = u * 2 - 1;
         v = v * 2 - 1;
         u *= rate;
-        r.A = vec3();
-        r.B = vec3(u, v, -1 / tanf(TO_Radian(FOV) / 2.0f)).make_unit_vector();
+        r.A = Vec3();
+        r.B = Vec3(u, v, -1 / tanf(TO_Radian(FOV) / 2.0f)).make_unit_vector();
     }
 };
 
