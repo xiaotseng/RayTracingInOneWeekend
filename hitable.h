@@ -1,9 +1,10 @@
 #ifndef _HITABLE_H_
 #define _HITABLE_H_
+#include <float.h>
 #include "Ray.h"
 struct hit_record
 { //射线检测记录
-    float t;
+    double t=DBL_MAX;
     vec3 p;
     vec3 normal;
 };

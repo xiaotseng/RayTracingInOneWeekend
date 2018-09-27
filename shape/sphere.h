@@ -16,10 +16,10 @@ bool shphere::hit(const Ray &r, float t_min, float t_max, hit_record &rec) const
   float a = dot(r.direction(), r.direction());
   float b = dot(r.direction(), oc);
   float c = dot(oc, oc) - radius * radius;
-  float discriminant = b * b - 4 * a * c;
+  float discriminant = b * b -  a * c;
   if (discriminant > 0)
   {
-    float temp = (-b - sqrt(discriminant)) / (2.0 * a);
+    float temp = (-b - sqrt(discriminant)) /a;
     if (temp < t_max && temp > t_min)
     {
       rec.t = temp;
@@ -27,7 +27,7 @@ bool shphere::hit(const Ray &r, float t_min, float t_max, hit_record &rec) const
       rec.normal = (rec.p - center) / radius;
       return true;
     }
-    temp = (-b + sqrt(discriminant)) / (2.0 * a);
+    temp = (-b + sqrt(discriminant)) /a;
     if (temp < t_max && temp > t_min)
     {
       rec.t = temp;

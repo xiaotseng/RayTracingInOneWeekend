@@ -166,4 +166,14 @@ inline vec3 unit_vector(const vec3 &v)
     return v / v.length();
 }
 
+inline vec3 random_in_unit_sphere()
+{ //单位球体里随机取一点
+	vec3 p;
+	do
+	{
+		p = vec3(drand48(), drand48(), drand48()) * 2.0 - vec3(1, 1, 1);
+	} while (p.sqaured_length() >= 1.0);
+    return p;
+}
+
 #endif

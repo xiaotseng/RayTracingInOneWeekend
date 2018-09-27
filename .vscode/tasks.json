@@ -22,7 +22,7 @@
                 "-static",
                 "-g",
                 "main.cpp",
-                "-Wall",
+                //"-Wall",
                 "-std=c++11",
                 //"libmyAPI.a",
                 "-o",
