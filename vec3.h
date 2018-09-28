@@ -168,12 +168,31 @@ inline Vec3 unit_vector(const Vec3 &v)
 
 inline Vec3 random_in_unit_sphere()
 { //单位球体里随机取一点
-	Vec3 p;
-	do
-	{
-		p = Vec3(drand48(), drand48(), drand48()) * 2.0 - Vec3(1, 1, 1);
-	} while (p.sqaured_length() >= 1.0);
+    Vec3 p;
+    do
+    {
+        p = Vec3(drand48(), drand48(), drand48()) * 2.0 - Vec3(1, 1, 1);
+    } while (p.sqaured_length() >= 1.0);
     return p;
 }
-
+//计算反射向量
+inline Vec3 reflect(const Vec3 &v, const Vec3 &n)
+{
+    return v - dot(v, n) * 2 * n;
+}
+//计算折射向量
+inline bool refract(const Vec3 &v, const Vec3 &n, float ni_over_nt, Vec3 &refracted)
+{
+    float dt = dot(v, n);
+    float discriminant = 1 - ni_over_nt * ni_over_nt * (1 - dt * dt); //入射介质的折射率大于出射介质的折射率，同时入射夹角大到一个值时该值为负。
+    if (discriminant > 0)
+    {
+        refracted = ni_over_nt * (v - dt * n) - n * sqrt(discriminant);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 #endif

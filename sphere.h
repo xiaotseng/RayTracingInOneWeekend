@@ -9,7 +9,7 @@ public:
   Vec3 center;
   float radius;
   Shphere(){};
-  Shphere(Vec3 cen, float r, Material *mat) : center(cen), radius(r),mat_ptr(mat){};
+  Shphere(Vec3 cen, float r, Material *mat) : center(cen), radius(r), mat_ptr(mat){};
   virtual bool hit(const Ray &r, float t_min, float t_max, Hit_record &rec) const;
 };
 bool Shphere::hit(const Ray &r, float t_min, float t_max, Hit_record &rec) const
@@ -27,7 +27,7 @@ bool Shphere::hit(const Ray &r, float t_min, float t_max, Hit_record &rec) const
       rec.t = temp;
       rec.p = r.point_at_parameter(rec.t);
       rec.normal = (rec.p - center) / radius;
-      rec.mat_ptr=mat_ptr;
+      rec.mat_ptr = mat_ptr;
       return true;
     }
     temp = (-b + sqrt(discriminant)) / a;
@@ -36,7 +36,7 @@ bool Shphere::hit(const Ray &r, float t_min, float t_max, Hit_record &rec) const
       rec.t = temp;
       rec.p = r.point_at_parameter(rec.t);
       rec.normal = (rec.p - center) / radius;
-      rec.mat_ptr=mat_ptr;
+      rec.mat_ptr = mat_ptr;
       return true;
     }
   }
