@@ -181,8 +181,10 @@ inline Vec3 reflect(const Vec3 &v, const Vec3 &n)
     return v - dot(v, n) * 2 * n;
 }
 //计算折射向量
-inline bool refract(const Vec3 &v, const Vec3 &n, float ni_over_nt, Vec3 &refracted)
+inline bool refract(const Vec3 &iv, const Vec3 &in, float ni_over_nt, Vec3 &refracted)
 {
+    Vec3 v(unit_vector(iv));
+    Vec3 n(unit_vector(in));
     float dt = dot(v, n);
     float discriminant = 1 - ni_over_nt * ni_over_nt * (1 - dt * dt); //入射介质的折射率大于出射介质的折射率，同时入射夹角大到一个值时该值为负。
     if (discriminant > 0)
