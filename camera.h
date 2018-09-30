@@ -9,8 +9,11 @@ class Camera
     Vec3 forward;
     Vec3 up;
     Vec3 origin;
+    float FOV;  //视角
+    float rate; //高宽比
+
     //本地到世界
-    Vec3 localToWorld(Vec3 &v)
+    Vec3 localToWorld(const Vec3 &v)
     {
         up.make_unit_vector();                              //v
         forward.make_unit_vector();                         //-w
@@ -19,19 +22,18 @@ class Camera
     }
 
   public:
-    float FOV;  //视角
-    float rate; //高宽比
     Camera(float inFOV, float inrate) : FOV(inFOV), rate(inrate)
     {
         origin = Vec3(0, 0, 0);
         up = Vec3(0, 1, 0);
         forward = Vec3(0, 0, -1);
     }
-    void lookat(Vec3 &from, Vec3 &to, Vec3 &up)
+    void lookat(const Vec3 &from, const Vec3 &to, const Vec3 &upDir)
     {
         origin = from;
         forward = (to - from).make_unit_vector();
-        
+        Vec3 right = cross(forward, upDir);
+        up = cross(right, forward).make_unit_vector();
     }
     void updateRay(float u, float v, Ray &r)
     { //通过uv计算射线

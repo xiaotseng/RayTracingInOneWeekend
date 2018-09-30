@@ -38,16 +38,18 @@ int main()
 {
 	int nx = 1024; //图片宽度
 	int ny = 512;  //图片高度
-	int ns = 32;	//采样数
-	Hitable *List[4];
+	int ns = 8;	//采样数
+	//Hitable *List[4];
+	Hitable **List = new Hitable *[5];
 	List[0] = new Shphere(Vec3(0, 0, -1), 0.5, new Lambertian(Vec3(0.8, 0.3, 0.3)));
 	List[1] = new Shphere(Vec3(0, -100.5, -1), 100, new Lambertian(Vec3(0.8, 0.8, 0)));
-	List[2] = new Shphere(Vec3(-1, 0, -1), 0.5, new Dielectric( 1.5));
-	List[3] = new Shphere(Vec3(-1, 0, -1), -0.45, new Dielectric( 1.5));
+	List[2] = new Shphere(Vec3(-1, 0, -1), 0.5, new Dielectric(1.5));
+	List[3] = new Shphere(Vec3(-1, 0, -1), -0.45, new Dielectric(1.5));
 	List[4] = new Shphere(Vec3(1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.8, 0.6)));
 	HitableList *world = new HitableList(List, 5);
 	Camera *camera = new Camera(90, float(nx) / float(ny)); //相机
-	Ray r;													//射线
+	camera->lookat(Vec3(-2, 2, 1), Vec3(0, 0, -1), Vec3(0, 1, 0));
+	Ray r; //射线
 	//文件对象
 	std::ofstream file("exsample.ppm");
 	file << "P3\n" //一定要大写的P
@@ -89,6 +91,17 @@ int main()
 		}
 	}
 	file.close();
+	//释放
+	for (int i = 0; i < 5; i++)
+	{
+		if (List[i])
+			delete List[i];
+		printf("delete %d\n", i);
+	}
+	delete List;
+	delete world;
+	delete camera;
+	///////
 	system("pause");
 	return 0;
 }
