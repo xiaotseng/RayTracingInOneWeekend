@@ -10,7 +10,7 @@ public:
   //进入射线，检测结果，光线衰减，发出射线
   virtual bool scatter(const Ray &r_in, const Hit_record &rec, Vec3 &attenuation, Ray &scattered) const = 0;
 };
-class Lambertian : public Material
+class Lambertian : public Material //漫反射材质
 {
 public:
   Vec3 albedo;
@@ -23,7 +23,7 @@ public:
     return true;
   }
 };
-class Metal : public Material
+class Metal : public Material //反射材质
 {
 public:
   Vec3 albedo;
@@ -39,10 +39,10 @@ public:
     return (dot(reflected, rec.normal) > 0);
   }
 };
-class Dielectric : public Material
+class Dielectric : public Material //透明材质
 {
 private:
-  float schlick(float cosine, float ref_idx) const
+  float schlick(float cosine, float ref_idx) const //反射概率
   {
     float r0 = (1 - ref_idx) / (1 + ref_idx);
     r0 *= r0;
@@ -77,7 +77,7 @@ public:
     //确定反射概率
     if (refract(r_in.direction(), outward_normal, ni_over_nt, refracted))
     {
-      reflect_prob = schlick(cosine, ref_idx);
+      reflect_prob = schlick(cosine, ref_idx)+0.2;
       //reflect_prob=0;
     }
     else
@@ -87,12 +87,11 @@ public:
     //
     if (reflect_prob > drand48())
     {
-      scattered =Ray(rec.p,reflected) ; //
+      scattered = Ray(rec.p, reflected); //
     }
     else
     {
-      scattered =Ray(rec.p,refracted);
-   
+      scattered = Ray(rec.p, refracted);
     }
 
     return true;

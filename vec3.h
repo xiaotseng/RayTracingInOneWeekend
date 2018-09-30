@@ -175,6 +175,17 @@ inline Vec3 random_in_unit_sphere()
     } while (p.sqaured_length() >= 1.0);
     return p;
 }
+
+inline Vec3 random_in_unit_disk()
+{
+    //单位圆盘里随机取一点
+    Vec3 p;
+    do
+    {
+        p = Vec3(drand48(), drand48(), 0) * 2.0 - Vec3(1, 1, 0);
+    } while (p.sqaured_length() >= 1.0);
+    return p;
+}
 //计算反射向量
 inline Vec3 reflect(const Vec3 &v, const Vec3 &n)
 {

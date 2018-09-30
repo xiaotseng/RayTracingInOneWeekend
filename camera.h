@@ -37,11 +37,12 @@ class Camera
     }
     void updateRay(float u, float v, Ray &r)
     { //通过uv计算射线
+        Vec3 rd=random_in_unit_disk()*0.1;
         u = u * 2 - 1;
         v = v * 2 - 1;
         u *= rate;
         Vec3 localDir = Vec3(u, v, -1 / tanf(TO_Radian(FOV) / 2.0f));
-        r = Ray(origin, localToWorld(localDir));
+        r = Ray(origin+rd, localToWorld(localDir));
     }
 };
 
