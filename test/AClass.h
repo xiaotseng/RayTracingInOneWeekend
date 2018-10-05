@@ -4,9 +4,9 @@
 #include "MyClass.h"
 class AClass
 {
-  public:
-    AClass();
-    void clsFun();
-    ZengLingJun::MyClass MyClass;
+public:
+  AClass();
+  void clsFun();
+  ZengLingJun::MyClass MyClass;
 };
 #endif

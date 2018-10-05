@@ -3,13 +3,15 @@
 #include "vec3.h"
 class Ray
 {
+private:
+  Vec3 A, B; //原点和方向
 public:
-  vec3 A, B;
   //类内部定义的函数都会被当做内联函数，不会计入符号表
-  Ray(const vec3 &o, const vec3 &d) : A(o), B(d){};
-  const vec3 &origin() const { return A; }
-  const vec3 &direction() const { return B; }
-  vec3 point_at_parameter(float t) const { return A + B * t; }
+  Ray() { Vec3(), Vec3(); };
+  Ray(const Vec3 &o, const Vec3 &d) : A(o), B(unit_vector(d)){};
+  const Vec3 &origin() const { return A; }
+  const Vec3 &direction() const { return B; }
+  Vec3 point_at_parameter(float t) const { return A + B * t; }
 };
 #define _RAY_H_
 #endif
